@@ -1,0 +1,153 @@
+﻿@model Web.Models.SANPHAM
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>SANPHAM</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ID_SANPHAM)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ID_SANPHAM)
+            @Html.ValidationMessageFor(model => model.ID_SANPHAM)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ID_CATALOGY, "CATALOGY")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("ID_CATALOGY", String.Empty)
+            @Html.ValidationMessageFor(model => model.ID_CATALOGY)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ID_NHASX, "NHASX")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("ID_NHASX", String.Empty)
+            @Html.ValidationMessageFor(model => model.ID_NHASX)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.TENSP)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.TENSP)
+            @Html.ValidationMessageFor(model => model.TENSP)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ID_SIZE, "SIZE")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("ID_SIZE", String.Empty)
+            @Html.ValidationMessageFor(model => model.ID_SIZE)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.GIA)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.GIA)
+            @Html.ValidationMessageFor(model => model.GIA)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SALE)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SALE)
+            @Html.ValidationMessageFor(model => model.SALE)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.MAUSAC)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MAUSAC)
+            @Html.ValidationMessageFor(model => model.MAUSAC)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.MOTA)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MOTA)
+            @Html.ValidationMessageFor(model => model.MOTA)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.IMAGE1)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.IMAGE1)
+            @Html.ValidationMessageFor(model => model.IMAGE1)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.IMAGE2)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.IMAGE2)
+            @Html.ValidationMessageFor(model => model.IMAGE2)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.IMAGE3)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.IMAGE3)
+            @Html.ValidationMessageFor(model => model.IMAGE3)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.IMAGE4)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.IMAGE4)
+            @Html.ValidationMessageFor(model => model.IMAGE4)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SOLUONG)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SOLUONG)
+            @Html.ValidationMessageFor(model => model.SOLUONG)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.NGAY)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NGAY)
+            @Html.ValidationMessageFor(model => model.NGAY)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.TAGS)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.TAGS)
+            @Html.ValidationMessageFor(model => model.TAGS)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

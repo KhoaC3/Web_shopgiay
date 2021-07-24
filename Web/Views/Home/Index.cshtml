@@ -1,0 +1,53 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model IEnumerable<Web.Models.SLIDEPHOTO>
+
+
+<!-- SLIDE ẢNH -->
+<div class="container">
+    <div class="sixteen columns">
+        <div id="slide_outer">
+            <div class="mainslide">
+                <div class="pagers center">
+                    <a class="prev slide_prev" href="#prev">Prev</a>
+                    <a class="nxt slide_nxt" href="#nxt">Next</a>
+                </div>
+
+                <ul class="cycle-slideshow clearfix"
+                    data-cycle-fx="scrollHorz"
+                    data-cycle-timeout="2000"
+                    data-cycle-slides="> li"
+                    data-cycle-pause-on-hover="true"
+                    data-cycle-prev="div.pagers a.slide_prev"
+                    data-cycle-next="div.pagers a.slide_nxt">
+                    @foreach (var item in Model)
+                    {
+                        <li class="clearfix">
+                            <div class="slide_img">
+                                <img src="@Url.Content("~/Upload/Slide/"+@item.LINKIMAGES)" width="400" alt="">
+                            </div>
+                            <div class="flex-caption">
+                                <h5>
+                                    Hàng mới về..<br>
+                                    <span>@item.TIEUDE</span>
+                                </h5>
+                                <p>@item.MOTA </p>
+
+                                <a href="@item.LienKet"><span>NEW 100%</span></a>
+                            </div>
+                        </li>
+                    }
+
+                </ul>
+            </div>
+            <div class="shadow_left"></div>
+            <div class="shadow_right"></div>
+        </div>
+
+    </div>
+</div>
+<!-- END SLIDE ẢNH -->
+
+

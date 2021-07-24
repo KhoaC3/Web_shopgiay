@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="cff40a9dd0d246b1998a61fa7a7f7017" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="SNEAKERSHOPModel.BINHLUAN" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SNEAKERSHOPModel.CATALOGY" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SNEAKERSHOPModel.MANAGER" Width="1.5" PointX="5.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="SNEAKERSHOPModel.NHASX" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SNEAKERSHOPModel.QUANGCAO" Width="1.5" PointX="7.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="SNEAKERSHOPModel.SANPHAM" Width="1.5" PointX="3" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SNEAKERSHOPModel.SEO" Width="1.5" PointX="7.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SNEAKERSHOPModel.SLIDEPHOTO" Width="1.5" PointX="7.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="SNEAKERSHOPModel.USER" Width="1.5" PointX="3" PointY="8.25" IsExpanded="true" />
+        <AssociationConnector Association="SNEAKERSHOPModel.FK_BINHLUAN_SANPHAM" ManuallyRouted="false" />
+        <AssociationConnector Association="SNEAKERSHOPModel.FK_DINHLUAN_USERS" ManuallyRouted="false" />
+        <AssociationConnector Association="SNEAKERSHOPModel.FK_Product_CATALOGY" ManuallyRouted="false" />
+        <AssociationConnector Association="SNEAKERSHOPModel.FK_Product_NHASX" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="SNEAKERSHOPModel.GIOITHIEU" Width="1.5" PointX="9.75" PointY="2" />
+        <EntityTypeShape EntityType="SNEAKERSHOPModel.LIEN_HE" Width="1.5" PointX="9.75" PointY="5" />
+        <EntityTypeShape EntityType="SNEAKERSHOPModel.PHANHOI_GOPY" Width="1.5" PointX="5.75" PointY="11" />
+        <EntityTypeShape EntityType="SNEAKERSHOPModel.sysdiagram" Width="1.5" PointX="9.75" PointY="9" />
+        <EntityTypeShape EntityType="SNEAKERSHOPModel.TINTUC" Width="1.5" PointX="7.75" PointY="12" />
+        <EntityTypeShape EntityType="SNEAKERSHOPModel.CT_DATHANG" Width="1.5" PointX="5.25" PointY="3.875" />
+        <EntityTypeShape EntityType="SNEAKERSHOPModel.DATHANG" Width="1.5" PointX="3" PointY="11.75" />
+        <AssociationConnector Association="SNEAKERSHOPModel.FK_CTDH_DATHANG" />
+        <AssociationConnector Association="SNEAKERSHOPModel.FK_CTDH_SANPHAM" />
+        <EntityTypeShape EntityType="SNEAKERSHOPModel.SIZE" Width="1.5" PointX="0.625" PointY="7.875" />
+        <AssociationConnector Association="SNEAKERSHOPModel.FK_Product_SIZE" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

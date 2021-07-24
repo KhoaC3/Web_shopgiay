@@ -1,0 +1,256 @@
+﻿@using Web.ViewModel
+
+@{
+    ViewBag.Title = "ShowCart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script type="text/javascript">
+    $(function () {
+        $('.btn_xoa').click(function () {
+            var x = $(this).attr("data-id");
+            if (confirm("Đối tượng sẽ bị xóa.Bạn có muốn không ?")) {
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("RemoveCart", "Shopping")',
+                    data: { id: x }
+                });
+                $("#row-" + x).remove();
+            }
+        })
+    })
+</script>
+
+
+<div class="container">
+    <div class="sixteen columns">
+
+        <div id="pageName">
+            <div class="name_tag">
+                <p><a href="#">TRANG CHỦ</a> >> GIỎ HÀNG  </p>
+                <div class="shapLeft"></div>
+                <div class="shapRight"></div>
+            </div>
+        </div><!--end pageName-->
+
+    </div>
+</div><!-- container -->
+<!-- strat the main content area -->
+
+<div class="container">
+
+    <div class="sixteen columns">
+        <div class="box_head">
+            <h3>GIỎ HÀNG CỦA BẠN</h3>
+        </div><!--end box_head -->
+            @if (Session["Cart"] != null)
+            {
+                var _CartSession = (List<CartVM>)Session["Cart"];
+                var Total = _CartSession.Sum(m => m.Product.GIA * m.Soluong);
+                    <table class="cart_table">
+                        <thead>
+                            <tr>
+                                <th class="first_td"><h4>SẢN PHẨM</h4></th>
+                                <th><h4>SỐ LƯỢNG</h4></th>
+                                <th><h4>ĐƠN GIÁ</h4></th>
+                                <th><h4>THÀNH TIỀN</h4></th>
+                                <th><h4>TÙY CHỌN</h4></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in _CartSession)
+                            {
+                   
+                                 var SubTotal = item.Soluong * item.Product.GIA;
+                   
+                                <tr id="row-@item.Product.ID_SANPHAM">
+                                    <td class="first_td">
+                                        <div class="clearfix">
+                                            <img src="@Url.Content("~/Upload/Sanpham/"+@item.Product.IMAGE1)" width="80" alt="@item.Product.MOTA" title="@item.Product.TENSP">
+                                            <span>
+                                                <strong><a href="@Url.Action("Chi tiết", "Product", new { id= item.Product.ID_SANPHAM })">@item.Product.TENSP</a></strong><br>
+                                                <ul>
+                                                    <li><a href="javascript:void(0);">text</a></li>
+                                                    <li><a href="javascript:void(0);">text</a></li>
+                                                    <li><a href="javascript:void(0);">text</a></li>
+                                                    <li><a href="javascript:void(0);">text</a></li>
+                                                    <li><a href="javascript:void(0);">text</a></li>
+                                                </ul>
+                                                Màu: @item.Product.MAUSAC<br>
+                                    
+                                            </span>
+                                        </div>
+                                    </td>
+                                    <td class="quantity">
+                                        <form>
+                                            <label>
+                                                <input class="gray_btn" type="button" id="min_qty" class="qty" value="-">
+                                            </label>
+                                            <label>
+                                                <input type="text" maxlength="20" name="" id="" class="" value="@item.Soluong" size="2">
+                                            </label>
+                                            <label>
+                                                <input class="gray_btn" type="button" id="max_qty" class="qty" value="+">
+                                            </label>
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <h5>@string.Format("{0:0,0 VNĐ}", item.Product.GIA).Replace(",", ".")</h5>
+                                    </td>
+                                    <td class="total_price">
+                                        <h5>@string.Format("{0:0,0 VNĐ}", SubTotal).Replace(",", ".")<br><span></span></h5>
+                                    </td>
+                                    <td>
+                                        @*<a class="delete_item"  href="" data-id="@item.Product.ID_SANPHAM">Xóa</a>*@
+                                        <a href="#" class="btn_xoa" data-id="@item.Product.ID_SANPHAM">Xóa</a>
+                                    </td>
+                                </tr>
+
+                            }
+                        </tbody>
+                    </table><!--end cart_table-->
+            }
+            else
+            {
+                <h1>Giỏ hàng trống</h1>
+                <p>
+                    <a href="@Url.Action("Index","Home")" class="linkButton1">Trở về Trang Chủ</a>
+                </p>
+
+            }
+    </div><!--end sixteen-->
+
+
+    <div class="ten columns">
+        <div class="cart_tabs clearfix">
+
+            <ul class="cart_tabs_nav">
+                <li><a class="active_tab" href="#estimate">Chi Phí Vẫn Chuyển</a></li>
+                <li><a href="#discount_code">Áp Dụng Mã Giảm Giá </a></li>
+                <li><a href="#gift_voucher">Sử Dụng Phiếu Quà Tặng</a></li>
+            </ul><!--end cart_tabs_nav-->
+
+            <div class="cart_tabs_content">
+                <div id="estimate" class="tab">
+                    <p>Nhập Địa Chỉ Để Tính Phí Vẫn Chuyển</p>
+                    <form method="#" action="#">
+                        <label class="clearfix">
+                            <strong>Tỉnh/Thành Phố:</strong>
+                            <select class="default" tabindex="1">
+                                <option value="">-- Chọn Tỉnh/ Thành Phố --</option>
+                                <option value="sometext1">Tp. Hồ Chí Minh</option>
+                                <option value="sometext2">Hà Nội</option>
+                                <option value="sometext3">Cần Thơ</option>
+                            </select>
+                        </label>
+
+                        <label class="clearfix">
+                            <strong>Huyện:</strong>
+                            <select name="state" class="default" tabindex="1">
+                                <option value="">-- Chọn Huyện --</option>
+                                <option value="text1">text1</option>
+                                <option value="text2">text2</option>
+                                <option value="text3">text3</option>
+                            </select>
+                        </label>
+
+                        <label for="post_code" class="clearfix">
+                            <strong>Mã Bưu Điện:</strong>
+                            <input type="text" name="post_code" value="" placeholder="12345">
+                        </label>
+
+                        <div class="submit">
+                            <input class="gray_btn" type="submit" name="submit" value="Xác Nhận">
+                        </div>
+                    </form>
+                </div>
+
+
+                <div id="discount_code" class="tab">
+                    <p>Nhập Mã Giảm Giá Của Bạn.</p>
+                    <form method="#" action="#">
+                        <label for="country" class="clearfix">
+                            <strong>Mã Giảm Giá:</strong>
+                            <input type="text" name="post_code" value="" placeholder="Nhập Mã Vào Đây">
+                        </label>
+
+                        <div class="submit">
+                            <input class="gray_btn" type="submit" name="submit" value="Áp Dụng Mã">
+                        </div>
+                    </form>
+                </div>
+
+                <div id="gift_voucher" class="tab">
+                    <p>Nhập Voucher Quà Tặng Của Bạn</p>
+                    <form method="#" action="#">
+                        <label for="country" class="clearfix">
+                            <strong>Mã Voucher:</strong>
+                            <input type="text" name="post_code" value="" placeholder="Nhập Mã Vào Đây">
+                        </label>
+
+                        <div class="submit">
+                            <input class="gray_btn" type="submit" name="submit" value="Áp Dụng Voucher">
+                        </div>
+                    </form>
+                </div>
+            </div><!--end cart_tabs_content-->
+
+        </div><!--end cart_tabs-->
+    </div><!--end ten-->
+
+    <div class="six columns">
+@if (Session["Cart"] != null)
+{
+    var _CartSession = (List<CartVM>)Session["Cart"];
+    var Total = _CartSession.Sum(m => m.Product.GIA * m.Soluong);
+    //var Sale = _CartSession.Sum(m => m.Product.SALE * m.Soluong);
+
+    
+        <table class="receipt">
+            <tbody>
+                <tr>
+                    <td>TỔNG SẢN PHẨM</td>
+                    <td>@string.Format("{0:0,0 VNĐ}", @Total).Replace(",", ".")</td>
+                </tr>
+                <tr>
+                    <td>GIẢM GIÁ</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>MÃ VOUCHER</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>THUẾ</td>
+                    <td>10%</td>
+                </tr>
+
+                <tr>
+                    <td style="font-weight:600;font-size:16px;">TOTAL</td>
+                    <td style="font-weight:600;font-size:16px;">@string.Format("{0:0,0 VNĐ}", @Total).Replace(",", ".")</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td class="last_td">
+                        <a class="gray_btn" href="@Url.Action("Index","Home")">Tiếp Tục Mua Sắm</a>
+                    </td>
+                    <td class="last_td">
+                        <a class="red_btn" href="@Url.Action("Checkout","Shopping")">THANH TOÁN</a>
+                    </td>
+                </tr>
+            </tfoot>
+
+
+        </table>
+}
+
+    </div><!--end six -->
+
+   
+
+
+</div><!--end container-->
+<!-- end the main content area -->
+
+

@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.Title = "LogOn";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model Web.ViewModel.LogOnModel
+
+@using (Html.BeginForm())
+{
+
+    <style>
+       fieldset {
+           margin: 10px 700px 10px 700px;
+       }
+    </style>
+
+    @Html.ValidationSummary(true)
+
+    <fieldset >
+        <b style="font-size: 120%">Đăng Nhập Tài Khoản</b>
+
+        
+        <div class="editor-field">
+            <label class="logon">Tên Đăng Nhập: </label>
+            @Html.EditorFor(model => model.LoginName)
+            @Html.ValidationMessageFor(model => model.LoginName)
+        </div>
+
+       
+        <div class="editor-field">
+            <label class="logon">Mật Khẩu:</label>
+            @Html.EditorFor(model => model.Password)
+            @Html.ValidationMessageFor(model => model.Password)
+        </div>
+
+      
+        <div class="editor-field">
+            <label class="logon">Ghi Nhớ Đăng Nhập</label>
+            @Html.EditorFor(model => model.RememberMe)
+            @Html.ValidationMessageFor(model => model.RememberMe)
+        </div>
+
+        <p>
+            <input class="red_btn" type="submit" value="Đăng Nhập" />
+        </p>
+    </fieldset>
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

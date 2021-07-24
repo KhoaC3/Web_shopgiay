@@ -1,0 +1,116 @@
+﻿@model Web.ViewModel.UserVM
+
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container">
+    <div class="sixteen columns">
+
+        <div id="pageName">
+            <div class="name_tag">
+                <p><a href="#">TRANG CHỦ</a> >> TẠO MỚI TÀI KHOẢN </p>
+                <div class="shapLeft"></div>
+                <div class="shapRight"></div>
+            </div>
+        </div><!--end pageName-->
+    </div>
+</div>
+<!--END HEADER LOGIN-->
+<!--MAIN LOGIN-->
+<div class="container">
+    <div id="user_log" class="clearfix">
+        <div class="nine columns">
+            <div class="register">
+                <div class="box_head">
+                    <h3>TẠO TÀI KHOÀN</h3>
+                    <div class="img_new"></div>
+                    </div><!--end box_head -->
+                     <h6>XIN HÃY ĐỂ LẠI THÔNG TIN CỦA BẠN</h6>
+                        @using (Html.BeginForm()){
+                        @Html.ValidationSummary(true)
+                        <form>
+                            <fieldset>
+                                <ol>
+                                    <li class="row clearfix">
+                                        <label class="input_tag" for="firstName">Tên đăng nhập <em>*</em></label>
+                                        <div class="inputOuter">
+                                            @Html.EditorFor(model => model.Loginname)
+                                        </div>
+                                        <span>@Html.ValidationMessageFor(model => model.Loginname)</span>
+                                    </li>
+
+                                    @Html.ValidationSummary()
+                                    <li class="row clearfix">
+                                        <label class="input_tag" for="chPass">Mật khẩu <em>*</em></label>
+                                        <div class="inputOuter">
+                                            @Html.EditorFor(model => model.Password)
+                                            <span>@Html.ValidationMessageFor(model => model.Password)</span>
+                                        </div>
+
+                                    </li>
+                                    <li class="row clearfix">
+                                        <label class="input_tag" for="coPass">Nhập lại mật khẩu <em>*</em></label>
+                                        <div class="inputOuter">
+                                            @Html.EditorFor(model => model.ConfirmPassword)
+                                            @Html.ValidationMessageFor(model => model.ConfirmPassword)
+                                        </div>
+                                    </li>
+                                </ol>
+                                <ol>
+                                    <li class="row clearfix">
+                                        <label class="input_tag" for="firstName">Họ tên <em>*</em></label>
+                                        <div class="inputOuter">
+                                            @Html.EditorFor(model => model.Username)
+                                            @Html.ValidationMessageFor(model => model.Username)
+                                        </div>
+                                    </li>
+
+
+                                    <li class="row clearfix">
+                                        <label class="input_tag" for="email">E-Mail <em>*</em></label>
+                                        <div class="inputOuter">
+                                            @Html.EditorFor(model => model.Email)
+                                            @Html.ValidationMessageFor(model => model.Email)
+                                        </div>
+                                    </li>
+
+                                    <li class="row clearfix">
+                                        <label class="input_tag" for="tele">Điện thoại<em>*</em></label>
+                                        <div class="inputOuter">
+                                            @Html.EditorFor(model => model.Dt)
+                                            @Html.ValidationMessageFor(model => model.Dt)
+                                        </div>
+                                    </li>
+                                    <li class="row clearfix">
+                                        <label class="input_tag" for="firstAddress">Địa chỉ <em>*</em></label>
+                                        <div class="inputOuter">
+                                            @Html.EditorFor(model => model.Diachi)
+                                            @Html.ValidationMessageFor(model => model.Diachi)
+                                        </div>
+                                    </li>
+
+                                </ol>
+                                
+                                <ol>
+                                    <li class="row clearfix">
+                                        <label class="input_tag" for="firstName">&nbsp;</label>
+                                        <div class="inputOuter button">
+                                            <a href="#"><input class="red_btn" type="submit" value="TẠO MỚI" /></a>
+                                        </div>
+                                    </li>
+                                </ol>
+                                <ol><li class="row clearfix"></li> </ol>
+                            </fieldset>
+                        </form>
+                        }
+                
+            </div><!--end login-->
+        </div><!--end user_log-->
+    </div>
+</div><!--end container-->
+    <!-- end the main content area -->
+    <!-- end the main content area -->
+

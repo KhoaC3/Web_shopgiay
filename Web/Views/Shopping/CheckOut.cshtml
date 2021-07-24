@@ -1,0 +1,145 @@
+﻿@using Web.ViewModel
+@model Web.Models.DATHANG
+
+@{
+    ViewBag.Title = "ShowCart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="sixteen columns">
+
+        <div id="pageName">
+            <div class="name_tag">
+                <p><a href="#">TRANG CHỦ</a> >> GIỎ HÀNG  </p>
+                <div class="shapLeft"></div>
+                <div class="shapRight"></div>
+            </div>
+        </div><!--end pageName-->
+
+    </div>
+</div><!-- container -->
+<!-- strat the main content area -->
+<div class="container">
+
+    <div class="sixteen columns">
+        
+            @if (Session["Cart"] != null)
+            {
+                var _CartSession = (List<CartVM>)Session["Cart"];
+                var Total = _CartSession.Sum(m => m.Product.GIA * m.Soluong);
+                <table class="cart_table">
+                    <thead>
+                        <tr>
+                            <th class="first_td"><h4>SẢN PHẨM</h4></th>
+                        
+                            <th><h4>GIÁ</h4></th>
+                            <th><h4>TỔNG GIÁ</h4></th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in _CartSession)
+                        {
+
+                            var SubTotal = item.Soluong * item.Product.GIA;
+
+                            <tr id="row-@item.Product.ID_SANPHAM">
+                                <td class="first_td">
+                                    <div class="clearfix">
+                                        <img src="@Url.Content("~/Upload/Sanpham/"+@item.Product.IMAGE1)" width="80" alt="@item.Product.MOTA" title="@item.Product.TENSP">
+                                        <span>
+                                            <strong><a href="@Url.Action("Chi tiết", "Product", new { id= item.Product.ID_SANPHAM })">@item.Product.TENSP</a></strong><br>
+                                            <ul>
+                                                <li><a href="javascript:void(0);">text</a></li>
+                                                <li><a href="javascript:void(0);">text</a></li>
+                                                <li><a href="javascript:void(0);">text</a></li>
+                                                <li><a href="javascript:void(0);">text</a></li>
+                                                <li><a href="javascript:void(0);">text</a></li>
+                                            </ul>
+                                            Color: @item.Product.MAUSAC<br>
+                                            Số lượng: @item.Soluong
+                                        </span>
+                                    </div>
+                                </td>
+                               
+                                <td>
+                                    <h4>@string.Format("{0:0,0 VNĐ}", item.Product.GIA).Replace(",", ".")</h4>
+                                </td>
+                                <td >
+                                    <h4>@string.Format("{0:0,0 VNĐ}", SubTotal).Replace(",", ".")<br><span></span></h4>
+                                </td>
+                                
+                            </tr>
+                            
+                        }
+                        <tr>
+                           
+                            <th></th>
+                            <th><h4>TỔNG GIÁ</h4></th>
+                            <td class="total_price">
+                                <h5>@string.Format("{0:0,0 VNĐ}", @Total).Replace(",", ".")<br><span></span></h5>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table><!--end cart_table-->
+            }
+      
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <div class="six columns">
+        @using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Thông tin khách hàng</legend>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.USRERNAME)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.USRERNAME)
+            @Html.ValidationMessageFor(model => model.USRERNAME)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.EMAIL)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.EMAIL)
+            @Html.ValidationMessageFor(model => model.EMAIL)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PHONE)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PHONE)
+            @Html.ValidationMessageFor(model => model.PHONE)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ADDRESS)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ADDRESS)
+            @Html.ValidationMessageFor(model => model.ADDRESS)
+        </div>
+        <p>
+            <input type="submit" value="Gửi Đơn Đặt Hàng" />
+        </p>
+    </fieldset>
+}
+    </div><!--end six -->
+    
+</div>
+
+@section Scripts {
+  @Scripts.Render("~/bundles/jqueryval")
+}

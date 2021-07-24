@@ -1,0 +1,136 @@
+﻿@model IEnumerable<Web.Models.CATALOGY>
+
+@using Web.ViewModel
+<script type="text/javascript">
+    $(function () {
+        $('.remove_item').click(function () {
+            var x = $(this).attr("data-id");
+            if (confirm("Đối tượng sẽ bị xóa.Bạn có muốn không ?")) {
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("RemoveCart", "Shopping")',
+                    data: { id: x }
+                });
+                $("#row-" + x).remove();
+            }
+        })
+    })
+</script>
+
+
+
+<div class="container">
+    <div class="sixteen columns">
+        <div id="mainNav" class="clearfix">
+            <nav>
+                <ul>
+                    <li><a class="tablets" href="@Url.Action("Index", "Home")">TRANG CHỦ</a></li>
+
+                    <li >
+
+                        <a class="desktop hasdropdown" href="">SẢN PHẨM</a>
+                        <ul class="submenu">
+                            @foreach (var item in Model)
+                            {
+                                <li><a href="@Url.Action("ProductId", "Product", new { id = item.ID_CATALOGY })">@item.NAME</a></li>
+                            }
+                        </ul>
+                    </li>
+                    
+                    <li><a class="labtops" href="@Url.Action("HD_Muahang", "Home")">HƯỚNG DẪN MUA HÀNG</a></li>
+                    <li><a class="tablets" href="@Url.Action("GioiThieu", "Home")">GIỚI THIỆU</a></li>
+                    <li><a class="" href="@Url.Action("Lienhe", "Home")">LIÊN HỆ</a></li>
+
+                </ul>
+
+            </nav><!--end nav-->
+
+            <div id="cart">
+
+        @if (Session["Cart"] != null)
+            {
+                var _CartSession = (List<CartVM>)Session["Cart"];
+                var Total = _CartSession.Sum(m => m.Product.GIA * m.Soluong);
+                var soluong = _CartSession.Sum(m => m.Soluong);
+            
+                <a class="cart_dropdown" href="javascript:void(0);">
+                <img src="~/Content/Main/Images/icons/cart_icon.png" alt=""> @soluong Sản phẩm: @string.Format("{0:0,0 VNĐ }", @Total).Replace(",", ".")</a>
+                <div class="cart_content">
+                    <b class="cart_content_arrow"></b>
+                    <ul>
+                            @foreach (var item in _CartSession)
+                                {
+                                    var SubTotal = item.Soluong * item.Product.GIA;
+
+
+                                    <li class="clearfix" id="row-@item.Product.ID_SANPHAM">
+                                        <div class="cart_product_name">
+                                            <img src="@Url.Content("~/Upload/Sanpham/"+@item.Product.IMAGE1)" width="60">
+                                            <span>
+                                                <strong><a href="#">@item.Product.TENSP</a></strong><br>
+                                                Color: @item.Product.MAUSAC<br>
+                                                Hãng SX: @item.Product.NHASX.NAME<br />
+                                                Số lượng: @item.Soluong đôi
+                                            </span>
+                                        </div>
+                                        <div class="cart_product_price">
+                                            <span>
+                                                <strong>@string.Format("{0:0,0 VNĐ}", SubTotal).Replace(",", ".")</strong><br>
+                                                <a class="remove_item" data-id="@item.Product.ID_SANPHAM">Xóa</a>
+                                            </span>
+                                        </div>
+                                        <div class="clear"></div>
+                                    </li>
+
+                                }
+                    </ul><!--end ul-->
+
+                    <div class="dropdown_cart_info clearfix">
+                        <div class="cart_buttons">
+                            <a class="gray_btn" href="@Url.Action("ShowCart", "Shopping")">Giỏ hàng</a><br>
+                            <a class="red_btn" href="@Url.Action("CheckOut", "Shopping")">Thanh toán</a>
+                        </div><!--end cart buttons-->
+
+                        <div class="cart_total_price">
+                            <span><strong>Tổng tiền: @string.Format("{0:0,0 VNĐ}", @Total).Replace(",", ".")</strong> </span>
+                        </div><!--end cart buttons-->
+                    </div><!--end dropdown_cart_info-->
+
+                </div><!--end cart_content-->
+            }
+            
+        else
+        {
+            <a class="cart_dropdown" href="javascript:void(0);">
+                <img src="~/Content/Main/Images/icons/cart_icon.png" alt=""> 0 Sản phẩm: VNĐ</a>
+                <div class="cart_content">
+                    <b class="cart_content_arrow"></b>
+                    <ul>
+                        <li class="clearfix">
+                            <div class="cart_product_name">
+                               <strong><a href="#">Chưa có sản phẩm nào trong giỏ hàng</a></strong>
+                            </div>
+                            <div class="clear"></div>
+                        </li>
+                        
+                    </ul><!--end ul-->
+
+                    <div class="dropdown_cart_info clearfix">
+                        <div class="cart_buttons">
+                            <a class="gray_btn" href="@Url.Action("ShowCart", "Shopping")">Giỏ hàng</a><br>
+                            <a class="red_btn" href="@Url.Action("CheckOut", "Shopping")">Thanh toán</a>
+                        </div><!--end cart buttons-->
+
+                        <div class="cart_total_price">
+                            <span><strong>Tổng tiền:</strong></span>
+                        </div><!--end cart buttons-->
+                    </div><!--end dropdown_cart_info-->
+
+                </div><!--end cart_content-->
+
+        }
+            </div><!--end cart-->
+
+        </div><!--end main-->
+    </div><!--end sixteen-->
+</div><!--end container-->

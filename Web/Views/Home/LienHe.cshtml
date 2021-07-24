@@ -1,0 +1,175 @@
+﻿@{
+    ViewBag.Title = "LienHe";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
+<script type="text/javascript">
+    //tạo 1 biến toàn cục lưu LatLng(vĩ độ, kinh độ)
+    //Viết hàm chuẩn bị (initialize) map
+
+    //trong đó có đối tượng mapoption gồm điểm chính giữa bản đồ (lấy giá trị là vĩ độ và kinh độ)
+    //độ zoom của map, giá trị từ 0 mức nhìn bao quát nhất đến 21 nhìn chi tiết nhất
+    var myLatlng = new google.maps.LatLng(10.761836, 106.646717);
+    function initialize() {
+        var mapOptions = {
+            center: myLatlng,
+            zoom: 13
+        };
+        //Tạo biến map với loại dữ liệu là map gắn vào div có id là map-canvas và option của map là hàm mapOptions phía trên
+        var map = new google.maps.Map(document.getElementById("googleMap"), mapOptions);
+
+        //tạo một marker(điểm đánh dấu) cho vị trí cửa hàng của bạn
+        //vị trí tại biến toàn cục latlng
+        //gắn vào map có tên là map (bởi có thể có 2 map trong cùng 1 trang web)
+        //với title là cửa hàng của tôi, khi rê chuột lên điểm marker sẽ thấy tên cửa hàng
+        var marker = new google.maps.Marker({
+            position: myLatlng,
+            map: map,
+            title: "Cửa hàng của tôi"
+        });
+
+        //tạo mới 1 infowindow với nội dung là HTML
+        var infowindow = new google.maps.InfoWindow({
+            content: '<center style="font-size:13px"><h3>Cửa hàng của tui</h3>' +
+                      '<a> 12 Trịnh đình thảo, Phường Phú Thọ Hoà, Tân Phú, HCM City <br>' +
+                      '<a>Tel: 0123 456 987 </a></center>'
+        });
+        //và cho infowindow mở lên trong map
+        infowindow.open(map, marker);
+
+    }//kết thúc hàm initialize
+
+    //khi trang web được load lên thì thực hiện hàm (initialize)
+    google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+
+
+<div class="container">
+    <div class="sixteen columns">
+
+        <div id="pageName">
+            <div class="name_tag">
+                <p><a href="@Url.Action("Index","Home")">TRANG CHỦ </a> >> LIÊN HỆ </p>
+                <div class="shapLeft"></div>
+                <div class="shapRight"></div>
+            </div>
+        </div><!--end pageName-->
+
+    </div>
+</div><!-- container -->
+<!-- strat the main content area -->
+
+<div class="container">
+    <div class="sixteen columns">
+
+        <div class="eleven columns alpha">
+            <div id="googleMap" ></div> 
+        </div><!--end eleven-->
+
+        <div class="five columns omega">
+            <div class="blocked_info">
+                <div>
+                    <h4>Block Info One</h4>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eu risus lorem, ut placerat nisl.
+                    </p>
+                </div>
+
+                <div>
+                    <h4>Block Info Two</h4>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eu risus lorem, ut placerat nisl.
+                    </p>
+                </div>
+
+                <div>
+                    <h4>Block Info Three</h4>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eu risus lorem, ut placerat nisl.
+                    </p>
+                </div>
+            </div><!--end blocked_info-->
+        </div><!--end five-->
+    </div><!--end sixteen-->
+
+    <div class="sixteen columns">
+
+        <div class="eleven columns alpha">
+            <div id="contact_form">
+                <div class="box_head">
+                    <h3>Gửi phàn hồi</h3>
+                <div class="img_new"></div>
+                </div><!--end box_head -->
+
+                <form action="#">
+
+                    <div class="five columns alpha">
+                        <input type="text" name="name" value="" placeholder="Họ Và Tên *">
+
+                        <input type="text" name="email" value="" placeholder=" E-Mail *">
+
+                        <input class="input_tool_tip" type="text" name="website" value="" placeholder="Your Website">
+
+                        <input type="text" name="company" value="" placeholder="Công ty ">
+                    </div><!--end five-->
+
+                    <div class="six columns omega">
+                        <textarea name="message" placeholder="Nội Dung  *"></textarea>
+                    </div><!--end six-->
+
+                    <div class="submitForm">
+                        <p>Mục có đánh dấu (*) là bắt buộc.</p>
+                        <input class="red_btn" type="submit" name="submit" value="Gửi ">
+                        <div class="clear"></div>
+                    </div><!--end submitForm-->
+
+                </form><!--end form-->
+
+            </div><!--end contact_form-->
+        </div><!--end eleven-->
+
+
+        <div class="five columns omega">
+            <div id="contact_info">
+                <ul>
+                    <li class="contact_address">
+                        <h6>Địa Chỉ</h6>
+                        <p>Chung cư EhomeS, Bình Hưng, Bình Chánh,Tp.HCM</p>
+                    </li>
+                    <li class="contact_email">
+                        <h6>E-MAIL</h6>
+                        <p>khoa18@gmail.com</p>
+                    </li>
+                    <li class="contact_phone">
+                        <h6>Số Điện Thoại</h6>
+                        <p>01656.081.083</p>
+                    </li>
+                    <li class="contact_fax">
+                        <h6>FAX</h6>
+                        <p>01656.081.083</p>
+                    </li>
+                </ul>
+            </div><!--end contact_info-->
+        </div><!--end five-->
+
+    </div><!--end sixteen-->
+
+    <div class="sixteen columns">
+        <section id="tagLine" class="clearfix">
+            <div class="twelve columns">
+                <h5>
+                    Shoploop <span>Cho phép bạn tải lên và bán hàng một cách dễ dàng.</span><br>
+                </h5>
+            </div>
+            <div class="three columns">
+                <a class="red_btn" href="#">start browsing</a>
+            </div>
+
+        </section><!--end tagLine-->
+    </div><!--end sixteen-->
+
+
+</div><!--end container-->
+<!-- end the main content area -->

@@ -1,0 +1,58 @@
+﻿@model Web.Models.DATHANG
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>DATHANG</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ID_ODER)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ID_ODER)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.USRERNAME)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.USRERNAME)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ADDRESS)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ADDRESS)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PHONE)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PHONE)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.EMAIL)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EMAIL)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ISACTIVE)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ISACTIVE)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Sửa", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

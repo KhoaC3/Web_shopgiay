@@ -1,0 +1,126 @@
+﻿@model IEnumerable<Web.Models.SANPHAM>
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Tạo mới", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ID_SANPHAM)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CATALOGY.NAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NHASX.NAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TENSP)
+        </th>
+        <th>
+                @Html.DisplayNameFor(model => model.SIZE)
+            </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GIA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SALE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MAUSAC)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MOTA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IMAGE1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IMAGE2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IMAGE3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IMAGE4)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SOLUONG)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NGAY)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TAGS)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID_SANPHAM)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CATALOGY.NAME)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NHASX.NAME)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TENSP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SIZE.SIZE1)
+             </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GIA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SALE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MAUSAC)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MOTA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IMAGE1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IMAGE2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IMAGE3)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IMAGE4)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SOLUONG)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NGAY)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TAGS)
+            </td>
+            <td>
+                @Html.ActionLink("Sửa", "Edit", new {  id=item.ID_SANPHAM  }) |
+                @Html.ActionLink("Chi tiết", "Details", new {  id=item.ID_SANPHAM }) |
+                @Html.ActionLink("Xoá", "Delete", new {  id=item.ID_SANPHAM })
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,67 @@
+﻿@model Web.Models.USER
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>USER</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ID_USER)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ID_USER)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.LOGINNAME)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.LOGINNAME)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PASS)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PASS)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.USERNAME)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.USERNAME)
+    </div>
+
+
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DT)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DT)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DIACHI)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DIACHI)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.EMAIL)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EMAIL)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Sửa", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

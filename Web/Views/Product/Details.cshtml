@@ -1,0 +1,140 @@
+﻿@model Web.Models.SANPHAM
+@{
+    ViewBag.Title = @Model.TENSP ;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container">
+    <div class="sixteen columns">
+
+        <div id="pageName">
+            <div class="name_tag">
+                <p><a href="@Url.Action("Index","Home")">TRANG CHỦ </a> >> SẢN PHẨM >> CHI TIẾT SẢN PHẨM </p>
+                <div class="shapLeft"></div>
+                <div class="shapRight"></div>
+            </div>
+        </div><!--end pageName-->
+
+    </div>
+</div><!-- container -->
+<!-- strat the main content area -->
+
+<div class="container">
+
+
+    <div class="sixteen columns">
+        <div class="box_head">
+            <h3>Chi tiết sản phẩm</h3>
+        <div class="img_new"></div>
+        </div><!--end box_head -->
+
+        <div class="seven columns alpha">
+            <div class="welcome_img">
+                <a >
+                    <img src="@Url.Content("~/Upload/Sanpham/" + Model.IMAGE1)"  alt="">
+                </a>
+                  
+            </div>
+            <div id="testimonial" class="seven columns omega">
+                <div id="tab_outer">
+                    <div></div>
+                    <ul id="tabNav" >
+                        <li>
+                            <a href="#client_4">
+                                <img src="@Url.Content("~/Upload/Sanpham/" + Model.IMAGE1)" alt="">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#client_1">
+                                <img src="@Url.Content("~/Upload/Sanpham/" + Model.IMAGE2)" alt="">
+                            </a>
+                        </li>
+                        <li class="currentTestimonial">
+                            <a href="#client_2">
+                                <img src="@Url.Content("~/Upload/Sanpham/" + Model.IMAGE3)" alt="">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#client_3">
+                                <img src="@Url.Content("~/Upload/Sanpham/" + Model.IMAGE4)" alt="">
+                            </a>
+                        </li>
+                        
+                       
+                    </ul>
+                </div>
+            </div>
+            </div><!--end four-->
+
+        <div class="nine columns omega">
+            <div class="welcome_text">
+                
+                <div class="span6">
+                    <h5 style="color:palevioletred">@Model.TENSP</h5>
+                    <h4>@Model.NHASX.NAME <br /><small>CHI TIẾT SẢN PHẨM</small></h4>
+                    <table class="table table-borderless">
+                        <tbody>
+                            <tr>
+                                <td class="span2">Size:</td>
+                                <td>
+                                    @Model.ID_SIZE                            
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="span2">Màu sắc:</td>
+                                <td>
+                                    @Model.MAUSAC
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="span2">Nhóm</td>
+                                <td>
+                                    @Model.CATALOGY.NAME
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="span2">Nhãn hiệu:</td>
+                                <td>
+                                    @Model.NHASX.NAME
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="span2">Giá:</td>
+                                <td>
+                                    @Model.GIA
+                                </td>
+                            </tr>
+                            @*<tr>
+                    <td class="span2">Sales:</td>
+                    <td>
+                       @Model.SALE
+                    </td>
+                </tr>*@
+
+                        </tbody>
+                    </table>
+
+
+                </div>
+
+                <a class="red_btn" href="~/Shopping/ShowCart">CHO VÀO GIỎ HÀNG</a>
+            </div>
+        </div><!--end fourteen-->
+
+    </div><!--end sixteen-->
+
+
+
+
+ 
+
+
+
+
+    
+    
+
+
+</div><!--end container-->
+<!-- end the main content area -->

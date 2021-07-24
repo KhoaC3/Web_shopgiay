@@ -1,0 +1,112 @@
+﻿@model Web.Models.LoginModel
+
+@{
+    ViewBag.Title = "Log in";
+}
+
+<!--HEADER LOGIN-->
+<div class="container">
+    <div class="sixteen columns">
+
+        <div id="pageName">
+            <div class="name_tag">
+                <p><a href="#">TRANG CHỦ</a> >> ĐĂNG NHẬP VÀO WEBSITE </p>
+                <div class="shapLeft"></div>
+                <div class="shapRight"></div>
+            </div>
+        </div><!--end pageName-->
+    </div>
+</div>
+<!--END HEADER LOGIN-->
+
+<div class="container">
+
+    <div id="user_log" class="clearfix">
+
+        <div class="nine columns">
+            <div class="login">
+                <div class="box_head">
+                    <h3>ĐĂNG NHẬP</h3>
+                    <div class="img"></div>
+                </div>
+                <!--end box_head -->
+                <h6>VUI LÒNG NHẬP VÀO ĐỂ ĐĂNG NHẬP VÀO WEBSITE</h6>
+                <section id="loginForm">
+                    @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true)
+                        
+                        <fieldset>
+                            <ol>
+                                <li class="row clearfix">
+                                    <label class="input_tag" for="mail">Tên tài khoản <em>*</em></label>
+                                    <div class="inputOuter">
+                                       @Html.TextBoxFor(m => m.UserName)
+                                        @Html.ValidationMessageFor(m => m.UserName)
+                                    </div>
+                                </li>
+                                <li class="row clearfix">
+                                    <label class="input_tag" for="pass">Mật khẩu <em>*</em></label>
+                                    <div class="inputOuter">
+                                        @Html.PasswordFor(m => m.Password)
+                                        @Html.ValidationMessageFor(m => m.Password)
+                                    </div>
+                                </li>
+                                <li class="row clearfix">
+                                    <label class="input_tag" for="checkbox1"></label>
+                                    @Html.CheckBoxFor(m => m.RememberMe)
+                                    @Html.LabelFor(m => m.RememberMe, new { @class = "checkbox" })
+                                    
+                                    <div class="inputOuter"> 
+                                        <br /><small><a href="@Url.Action("Register", "Account") ">Đăng kí nếu bạn chưa có tài khoản</a></small>
+                                    </div>
+                                </li>
+                                <li class="row clearfix">
+                                    <label class="input_tag" for="firstName">&nbsp;</label>
+                                    <div class="inputOuter button">
+                                        <a href="#" class="red_btn"><input type="submit" value="Log in" /></a>
+                                    </div>
+                                </li>
+                            </ol>
+
+                           
+                            
+                            
+                        </fieldset>
+                       
+                        }
+                    
+       </section>
+
+</div><!--end login-->
+            </div>
+
+        <div class="seven columns">
+            <div class="login">
+                <div class="box_head">
+                    <h3>TÀI KHOẢN KHÁC </h3>
+                <div class="img_new"></div>
+                </div><!--end box_head -->
+                <section class="social" id="socialLoginForm">
+                    <h6>ĐĂNG NHẬP VỚI TÀI KHOẢN GOOGLE, FACEBOOK, TWITER..</h6>
+                    @Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })
+                </section>
+
+            </div><!--end login-->
+
+
+
+        </div><!--end seven-->
+
+        </div><!--end nine-->
+
+
+         
+</div><!--end container-->
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

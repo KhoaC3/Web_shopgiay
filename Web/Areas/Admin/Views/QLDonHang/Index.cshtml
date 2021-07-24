@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Web.Models.DATHANG>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Tạo mới", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ID_ODER)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.USRERNAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ADDRESS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PHONE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EMAIL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ISACTIVE)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID_ODER)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.USRERNAME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ADDRESS)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PHONE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EMAIL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ISACTIVE)
+        </td>
+        <td>
+            @Html.ActionLink("Sửa", "Edit", new { id=item.ID_ODER  }) |
+            @Html.ActionLink("Chi tiết", "Details", new { id = item.ID_ODER }) |
+            @Html.ActionLink("Xoá", "Delete", new { id = item.ID_ODER })
+        </td>
+    </tr>
+}
+
+</table>

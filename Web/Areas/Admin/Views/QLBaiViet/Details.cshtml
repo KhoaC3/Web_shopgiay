@@ -1,0 +1,51 @@
+﻿@model Web.Models.TINTUC
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>TINTUC</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ID_TT)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ID_TT)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TIEUDE)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TIEUDE)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.IMAGES)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IMAGES)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NOIDUNGTOMTAT)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NOIDUNGTOMTAT)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NOIDUNG)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NOIDUNG)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Sửa", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

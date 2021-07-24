@@ -1,0 +1,30 @@
+﻿@model Web.Models.NHASX
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>NHASX</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ID_NHASX)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ID_NHASX)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NAME)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NAME)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Sửa", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

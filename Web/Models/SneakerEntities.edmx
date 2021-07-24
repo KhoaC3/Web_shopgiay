@@ -1,0 +1,871 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SNEAKERSHOPModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BINHLUAN">
+          <Key>
+            <PropertyRef Name="ID_BINHLUAN" />
+          </Key>
+          <Property Name="ID_BINHLUAN" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_USER" Type="int" Nullable="false" />
+          <Property Name="ID_SANPHAM" Type="int" Nullable="false" />
+          <Property Name="NGAY" Type="datetime" Nullable="false" />
+          <Property Name="NOIDUNG" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="CATALOGY">
+          <Key>
+            <PropertyRef Name="ID_CATALOGY" />
+          </Key>
+          <Property Name="ID_CATALOGY" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CT_DATHANG">
+          <Key>
+            <PropertyRef Name="ID_CTDH" />
+          </Key>
+          <Property Name="ID_CTDH" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_ODER" Type="int" Nullable="false" />
+          <Property Name="ID_SANPHAM" Type="int" Nullable="false" />
+          <Property Name="SOLUONG" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DATHANG">
+          <Key>
+            <PropertyRef Name="ID_ODER" />
+          </Key>
+          <Property Name="ID_ODER" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="USRERNAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ADDRESS" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="PHONE" Type="nvarchar" MaxLength="11" Nullable="false" />
+          <Property Name="EMAIL" Type="nvarchar" MaxLength="100" />
+          <Property Name="ISACTIVE" Type="bit" />
+        </EntityType>
+        <EntityType Name="GIOITHIEU">
+          <Key>
+            <PropertyRef Name="ID_GT" />
+          </Key>
+          <Property Name="ID_GT" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TIEUDE" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="NOIDUNG" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="LIEN_HE">
+          <Key>
+            <PropertyRef Name="ID_LH" />
+          </Key>
+          <Property Name="ID_LH" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="INFO_1" Type="nvarchar(max)" />
+          <Property Name="INFO_2" Type="nvarchar(max)" />
+          <Property Name="INFO_3" Type="nvarchar(max)" />
+          <Property Name="OURADDRESS" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="PHONE1" Type="nvarchar" MaxLength="11" Nullable="false" />
+          <Property Name="PHONE2" Type="nvarchar" MaxLength="11" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MANAGER">
+          <Key>
+            <PropertyRef Name="ID_MANAGER" />
+          </Key>
+          <Property Name="ID_MANAGER" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LOGINNAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PASS" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="USERNAME" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="IMAGE1" Type="nvarchar(max)" />
+          <Property Name="EMAIL" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="ISACTIVE" Type="bit" />
+          <Property Name="ISADMIN" Type="bit" />
+        </EntityType>
+        <EntityType Name="NHASX">
+          <Key>
+            <PropertyRef Name="ID_NHASX" />
+          </Key>
+          <Property Name="ID_NHASX" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PHANHOI_GOPY">
+          <Key>
+            <PropertyRef Name="ID_PH_GOPY" />
+          </Key>
+          <Property Name="ID_PH_GOPY" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="200" />
+          <Property Name="EMAIL" Type="nvarchar" MaxLength="100" />
+          <Property Name="WEBSITE" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NOIDUNG" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="QUANGCAO">
+          <Key>
+            <PropertyRef Name="ID_QC" />
+          </Key>
+          <Property Name="ID_QC" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TIEUDE" Type="nvarchar" MaxLength="200" />
+          <Property Name="LINKIMAGES" Type="nvarchar(max)" />
+          <Property Name="NGAY" Type="datetime" Nullable="false" />
+          <Property Name="ThuTu" Type="int" Nullable="false" />
+          <Property Name="LienKet" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="SANPHAM">
+          <Key>
+            <PropertyRef Name="ID_SANPHAM" />
+          </Key>
+          <Property Name="ID_SANPHAM" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_CATALOGY" Type="int" Nullable="false" />
+          <Property Name="ID_NHASX" Type="int" Nullable="false" />
+          <Property Name="TENSP" Type="nvarchar" MaxLength="100" />
+          <Property Name="ID_SIZE" Type="int" Nullable="false" />
+          <Property Name="GIA" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="SALE" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="MAUSAC" Type="nvarchar" MaxLength="150" />
+          <Property Name="MOTA" Type="nvarchar(max)" />
+          <Property Name="IMAGE1" Type="nvarchar(max)" />
+          <Property Name="IMAGE2" Type="nvarchar(max)" />
+          <Property Name="IMAGE3" Type="nvarchar(max)" />
+          <Property Name="IMAGE4" Type="nvarchar(max)" />
+          <Property Name="SOLUONG" Type="int" Nullable="false" />
+          <Property Name="NGAY" Type="datetime" Nullable="false" />
+          <Property Name="TAGS" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="SEO">
+          <Key>
+            <PropertyRef Name="ID_SEO" />
+          </Key>
+          <Property Name="ID_SEO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TITLES" Type="nvarchar" MaxLength="200" />
+          <Property Name="DESCRIPTIONS" Type="nvarchar(max)" />
+          <Property Name="KEYWORDS" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SIZE">
+          <Key>
+            <PropertyRef Name="ID_SIZE" />
+          </Key>
+          <Property Name="ID_SIZE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SIZE1" Type="nvarchar" MaxLength="5" />
+          <Property Name="NAME" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="SLIDEPHOTO">
+          <Key>
+            <PropertyRef Name="ID_SLIDE" />
+          </Key>
+          <Property Name="ID_SLIDE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TIEUDE" Type="nvarchar" MaxLength="200" />
+          <Property Name="LINKIMAGES" Type="nvarchar" MaxLength="200" />
+          <Property Name="LienKet" Type="nvarchar" MaxLength="200" />
+          <Property Name="MOTA" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TINTUC">
+          <Key>
+            <PropertyRef Name="ID_TT" />
+          </Key>
+          <Property Name="ID_TT" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TIEUDE" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="IMAGES" Type="nvarchar" MaxLength="200" />
+          <Property Name="NOIDUNGTOMTAT" Type="nvarchar" MaxLength="200" />
+          <Property Name="NOIDUNG" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="USERS">
+          <Key>
+            <PropertyRef Name="ID_USER" />
+          </Key>
+          <Property Name="ID_USER" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LOGINNAME" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PASS" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="USERNAME" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="DT" Type="nvarchar" MaxLength="11" Nullable="false" />
+          <Property Name="DIACHI" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="EMAIL" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_BINHLUAN_SANPHAM">
+          <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="1" />
+          <End Role="BINHLUAN" Type="Self.BINHLUAN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SANPHAM">
+              <PropertyRef Name="ID_SANPHAM" />
+            </Principal>
+            <Dependent Role="BINHLUAN">
+              <PropertyRef Name="ID_SANPHAM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CTDH_DATHANG">
+          <End Role="DATHANG" Type="Self.DATHANG" Multiplicity="1" />
+          <End Role="CT_DATHANG" Type="Self.CT_DATHANG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DATHANG">
+              <PropertyRef Name="ID_ODER" />
+            </Principal>
+            <Dependent Role="CT_DATHANG">
+              <PropertyRef Name="ID_ODER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CTDH_SANPHAM">
+          <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="1" />
+          <End Role="CT_DATHANG" Type="Self.CT_DATHANG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SANPHAM">
+              <PropertyRef Name="ID_SANPHAM" />
+            </Principal>
+            <Dependent Role="CT_DATHANG">
+              <PropertyRef Name="ID_SANPHAM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DINHLUAN_USERS">
+          <End Role="USERS" Type="Self.USERS" Multiplicity="1" />
+          <End Role="BINHLUAN" Type="Self.BINHLUAN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="ID_USER" />
+            </Principal>
+            <Dependent Role="BINHLUAN">
+              <PropertyRef Name="ID_USER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_CATALOGY">
+          <End Role="CATALOGY" Type="Self.CATALOGY" Multiplicity="1" />
+          <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATALOGY">
+              <PropertyRef Name="ID_CATALOGY" />
+            </Principal>
+            <Dependent Role="SANPHAM">
+              <PropertyRef Name="ID_CATALOGY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_NHASX">
+          <End Role="NHASX" Type="Self.NHASX" Multiplicity="1" />
+          <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NHASX">
+              <PropertyRef Name="ID_NHASX" />
+            </Principal>
+            <Dependent Role="SANPHAM">
+              <PropertyRef Name="ID_NHASX" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_SIZE">
+          <End Role="SIZE" Type="Self.SIZE" Multiplicity="1" />
+          <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SIZE">
+              <PropertyRef Name="ID_SIZE" />
+            </Principal>
+            <Dependent Role="SANPHAM">
+              <PropertyRef Name="ID_SIZE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SNEAKERSHOPModelStoreContainer">
+          <EntitySet Name="BINHLUAN" EntityType="Self.BINHLUAN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CATALOGY" EntityType="Self.CATALOGY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CT_DATHANG" EntityType="Self.CT_DATHANG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DATHANG" EntityType="Self.DATHANG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GIOITHIEU" EntityType="Self.GIOITHIEU" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LIEN_HE" EntityType="Self.LIEN_HE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MANAGER" EntityType="Self.MANAGER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NHASX" EntityType="Self.NHASX" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PHANHOI_GOPY" EntityType="Self.PHANHOI_GOPY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QUANGCAO" EntityType="Self.QUANGCAO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SANPHAM" EntityType="Self.SANPHAM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SEO" EntityType="Self.SEO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SIZE" EntityType="Self.SIZE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SLIDEPHOTO" EntityType="Self.SLIDEPHOTO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TINTUC" EntityType="Self.TINTUC" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USERS" EntityType="Self.USERS" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_BINHLUAN_SANPHAM" Association="Self.FK_BINHLUAN_SANPHAM">
+            <End Role="SANPHAM" EntitySet="SANPHAM" />
+            <End Role="BINHLUAN" EntitySet="BINHLUAN" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CTDH_DATHANG" Association="Self.FK_CTDH_DATHANG">
+            <End Role="DATHANG" EntitySet="DATHANG" />
+            <End Role="CT_DATHANG" EntitySet="CT_DATHANG" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CTDH_SANPHAM" Association="Self.FK_CTDH_SANPHAM">
+            <End Role="SANPHAM" EntitySet="SANPHAM" />
+            <End Role="CT_DATHANG" EntitySet="CT_DATHANG" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DINHLUAN_USERS" Association="Self.FK_DINHLUAN_USERS">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="BINHLUAN" EntitySet="BINHLUAN" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_CATALOGY" Association="Self.FK_Product_CATALOGY">
+            <End Role="CATALOGY" EntitySet="CATALOGY" />
+            <End Role="SANPHAM" EntitySet="SANPHAM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_NHASX" Association="Self.FK_Product_NHASX">
+            <End Role="NHASX" EntitySet="NHASX" />
+            <End Role="SANPHAM" EntitySet="SANPHAM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_SIZE" Association="Self.FK_Product_SIZE">
+            <End Role="SIZE" EntitySet="SIZE" />
+            <End Role="SANPHAM" EntitySet="SANPHAM" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SNEAKERSHOPModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BINHLUAN">
+          <Key>
+            <PropertyRef Name="ID_BINHLUAN" />
+          </Key>
+          <Property Name="ID_BINHLUAN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_USER" Type="Int32" Nullable="false" />
+          <Property Name="ID_SANPHAM" Type="Int32" Nullable="false" />
+          <Property Name="NGAY" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="NOIDUNG" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="SANPHAM" Relationship="Self.FK_BINHLUAN_SANPHAM" FromRole="BINHLUAN" ToRole="SANPHAM" />
+          <NavigationProperty Name="USER" Relationship="Self.FK_DINHLUAN_USERS" FromRole="BINHLUAN" ToRole="USERS" />
+        </EntityType>
+        <EntityType Name="CATALOGY">
+          <Key>
+            <PropertyRef Name="ID_CATALOGY" />
+          </Key>
+          <Property Name="ID_CATALOGY" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="SANPHAMs" Relationship="Self.FK_Product_CATALOGY" FromRole="CATALOGY" ToRole="SANPHAM" />
+        </EntityType>
+        <EntityType Name="MANAGER">
+          <Key>
+            <PropertyRef Name="ID_MANAGER" />
+          </Key>
+          <Property Name="ID_MANAGER" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LOGINNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PASS" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="USERNAME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IMAGE1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EMAIL" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ISACTIVE" Type="Boolean" />
+          <Property Name="ISADMIN" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="NHASX">
+          <Key>
+            <PropertyRef Name="ID_NHASX" />
+          </Key>
+          <Property Name="ID_NHASX" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="SANPHAMs" Relationship="Self.FK_Product_NHASX" FromRole="NHASX" ToRole="SANPHAM" />
+        </EntityType>
+        <EntityType Name="QUANGCAO">
+          <Key>
+            <PropertyRef Name="ID_QC" />
+          </Key>
+          <Property Name="ID_QC" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TIEUDE" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="LINKIMAGES" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NGAY" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ThuTu" Type="Int32" Nullable="false" />
+          <Property Name="LienKet" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="SANPHAM">
+          <Key>
+            <PropertyRef Name="ID_SANPHAM" />
+          </Key>
+          <Property Name="ID_SANPHAM" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_CATALOGY" Type="Int32" Nullable="false" />
+          <Property Name="ID_NHASX" Type="Int32" Nullable="false" />
+          <Property Name="TENSP" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ID_SIZE" Type="Int32" Nullable="false" />
+          <Property Name="GIA" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="SALE" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="MAUSAC" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="MOTA" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IMAGE1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IMAGE2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IMAGE3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IMAGE4" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SOLUONG" Type="Int32" Nullable="false" />
+          <Property Name="NGAY" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TAGS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="BINHLUANs" Relationship="Self.FK_BINHLUAN_SANPHAM" FromRole="SANPHAM" ToRole="BINHLUAN" />
+          <NavigationProperty Name="CATALOGY" Relationship="Self.FK_Product_CATALOGY" FromRole="SANPHAM" ToRole="CATALOGY" />
+          <NavigationProperty Name="NHASX" Relationship="Self.FK_Product_NHASX" FromRole="SANPHAM" ToRole="NHASX" />
+          <NavigationProperty Name="CT_DATHANG" Relationship="SNEAKERSHOPModel.FK_CTDH_SANPHAM" FromRole="SANPHAM" ToRole="CT_DATHANG" />
+          <NavigationProperty Name="SIZE" Relationship="SNEAKERSHOPModel.FK_Product_SIZE" FromRole="SANPHAM" ToRole="SIZE" />
+        </EntityType>
+        <EntityType Name="SEO">
+          <Key>
+            <PropertyRef Name="ID_SEO" />
+          </Key>
+          <Property Name="ID_SEO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TITLES" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="DESCRIPTIONS" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="KEYWORDS" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="SLIDEPHOTO">
+          <Key>
+            <PropertyRef Name="ID_SLIDE" />
+          </Key>
+          <Property Name="ID_SLIDE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TIEUDE" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="LINKIMAGES" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="LienKet" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="MOTA" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="USER">
+          <Key>
+            <PropertyRef Name="ID_USER" />
+          </Key>
+          <Property Name="ID_USER" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LOGINNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PASS" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="USERNAME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DT" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DIACHI" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="BINHLUANs" Relationship="Self.FK_DINHLUAN_USERS" FromRole="USERS" ToRole="BINHLUAN" />
+        </EntityType>
+        <Association Name="FK_BINHLUAN_SANPHAM">
+          <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="1" />
+          <End Role="BINHLUAN" Type="Self.BINHLUAN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SANPHAM">
+              <PropertyRef Name="ID_SANPHAM" />
+            </Principal>
+            <Dependent Role="BINHLUAN">
+              <PropertyRef Name="ID_SANPHAM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DINHLUAN_USERS">
+          <End Role="USERS" Type="Self.USER" Multiplicity="1" />
+          <End Role="BINHLUAN" Type="Self.BINHLUAN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="ID_USER" />
+            </Principal>
+            <Dependent Role="BINHLUAN">
+              <PropertyRef Name="ID_USER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_CATALOGY">
+          <End Role="CATALOGY" Type="Self.CATALOGY" Multiplicity="1" />
+          <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CATALOGY">
+              <PropertyRef Name="ID_CATALOGY" />
+            </Principal>
+            <Dependent Role="SANPHAM">
+              <PropertyRef Name="ID_CATALOGY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_NHASX">
+          <End Role="NHASX" Type="Self.NHASX" Multiplicity="1" />
+          <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NHASX">
+              <PropertyRef Name="ID_NHASX" />
+            </Principal>
+            <Dependent Role="SANPHAM">
+              <PropertyRef Name="ID_NHASX" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SneakerEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BINHLUANs" EntityType="Self.BINHLUAN" />
+          <EntitySet Name="CATALOGies" EntityType="Self.CATALOGY" />
+          <EntitySet Name="MANAGERs" EntityType="Self.MANAGER" />
+          <EntitySet Name="NHASXes" EntityType="Self.NHASX" />
+          <EntitySet Name="QUANGCAOs" EntityType="Self.QUANGCAO" />
+          <EntitySet Name="SANPHAMs" EntityType="Self.SANPHAM" />
+          <EntitySet Name="SEOs" EntityType="Self.SEO" />
+          <EntitySet Name="SLIDEPHOTOes" EntityType="Self.SLIDEPHOTO" />
+          <EntitySet Name="USERS" EntityType="Self.USER" />
+          <AssociationSet Name="FK_BINHLUAN_SANPHAM" Association="Self.FK_BINHLUAN_SANPHAM">
+            <End Role="SANPHAM" EntitySet="SANPHAMs" />
+            <End Role="BINHLUAN" EntitySet="BINHLUANs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DINHLUAN_USERS" Association="Self.FK_DINHLUAN_USERS">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="BINHLUAN" EntitySet="BINHLUANs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_CATALOGY" Association="Self.FK_Product_CATALOGY">
+            <End Role="CATALOGY" EntitySet="CATALOGies" />
+            <End Role="SANPHAM" EntitySet="SANPHAMs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_NHASX" Association="Self.FK_Product_NHASX">
+            <End Role="NHASX" EntitySet="NHASXes" />
+            <End Role="SANPHAM" EntitySet="SANPHAMs" />
+          </AssociationSet>
+          <EntitySet Name="GIOITHIEUx" EntityType="SNEAKERSHOPModel.GIOITHIEU" />
+          <EntitySet Name="LIEN_HE" EntityType="SNEAKERSHOPModel.LIEN_HE" />
+          <EntitySet Name="PHANHOI_GOPY" EntityType="SNEAKERSHOPModel.PHANHOI_GOPY" />
+          <EntitySet Name="sysdiagrams" EntityType="SNEAKERSHOPModel.sysdiagram" />
+          <EntitySet Name="TINTUCs" EntityType="SNEAKERSHOPModel.TINTUC" />
+          <EntitySet Name="CT_DATHANG" EntityType="SNEAKERSHOPModel.CT_DATHANG" />
+          <EntitySet Name="DATHANGs" EntityType="SNEAKERSHOPModel.DATHANG" />
+          <AssociationSet Name="FK_CTDH_DATHANG" Association="SNEAKERSHOPModel.FK_CTDH_DATHANG">
+            <End Role="DATHANG" EntitySet="DATHANGs" />
+            <End Role="CT_DATHANG" EntitySet="CT_DATHANG" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CTDH_SANPHAM" Association="SNEAKERSHOPModel.FK_CTDH_SANPHAM">
+            <End Role="SANPHAM" EntitySet="SANPHAMs" />
+            <End Role="CT_DATHANG" EntitySet="CT_DATHANG" />
+          </AssociationSet>
+          <EntitySet Name="SIZEs" EntityType="SNEAKERSHOPModel.SIZE" />
+          <AssociationSet Name="FK_Product_SIZE" Association="SNEAKERSHOPModel.FK_Product_SIZE">
+            <End Role="SIZE" EntitySet="SIZEs" />
+            <End Role="SANPHAM" EntitySet="SANPHAMs" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="GIOITHIEU">
+          <Key>
+            <PropertyRef Name="ID_GT" />
+          </Key>
+          <Property Name="ID_GT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TIEUDE" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="NOIDUNG" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="LIEN_HE">
+          <Key>
+            <PropertyRef Name="ID_LH" />
+          </Key>
+          <Property Name="ID_LH" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="INFO_1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="INFO_2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="INFO_3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OURADDRESS" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EMAIL" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PHONE1" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="PHONE2" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="PHANHOI_GOPY">
+          <Key>
+            <PropertyRef Name="ID_PH_GOPY" />
+          </Key>
+          <Property Name="ID_PH_GOPY" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="WEBSITE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NOIDUNG" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TINTUC">
+          <Key>
+            <PropertyRef Name="ID_TT" />
+          </Key>
+          <Property Name="ID_TT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TIEUDE" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="IMAGES" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="NOIDUNGTOMTAT" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="NOIDUNG" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CT_DATHANG">
+          <Key>
+            <PropertyRef Name="ID_CTDH" />
+          </Key>
+          <Property Name="ID_CTDH" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_ODER" Type="Int32" Nullable="false" />
+          <Property Name="ID_SANPHAM" Type="Int32" Nullable="false" />
+          <Property Name="SOLUONG" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="DATHANG" Relationship="SNEAKERSHOPModel.FK_CTDH_DATHANG" FromRole="CT_DATHANG" ToRole="DATHANG" />
+          <NavigationProperty Name="SANPHAM" Relationship="SNEAKERSHOPModel.FK_CTDH_SANPHAM" FromRole="CT_DATHANG" ToRole="SANPHAM" />
+        </EntityType>
+        <EntityType Name="DATHANG">
+          <Key>
+            <PropertyRef Name="ID_ODER" />
+          </Key>
+          <Property Name="ID_ODER" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="USRERNAME" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ADDRESS" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PHONE" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ISACTIVE" Type="Boolean" />
+          <NavigationProperty Name="CT_DATHANG" Relationship="SNEAKERSHOPModel.FK_CTDH_DATHANG" FromRole="DATHANG" ToRole="CT_DATHANG" />
+        </EntityType>
+        <Association Name="FK_CTDH_DATHANG">
+          <End Type="SNEAKERSHOPModel.DATHANG" Role="DATHANG" Multiplicity="1" />
+          <End Type="SNEAKERSHOPModel.CT_DATHANG" Role="CT_DATHANG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DATHANG">
+              <PropertyRef Name="ID_ODER" />
+            </Principal>
+            <Dependent Role="CT_DATHANG">
+              <PropertyRef Name="ID_ODER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CTDH_SANPHAM">
+          <End Type="SNEAKERSHOPModel.SANPHAM" Role="SANPHAM" Multiplicity="1" />
+          <End Type="SNEAKERSHOPModel.CT_DATHANG" Role="CT_DATHANG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SANPHAM">
+              <PropertyRef Name="ID_SANPHAM" />
+            </Principal>
+            <Dependent Role="CT_DATHANG">
+              <PropertyRef Name="ID_SANPHAM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="SIZE">
+          <Key>
+            <PropertyRef Name="ID_SIZE" />
+          </Key>
+          <Property Name="ID_SIZE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SIZE1" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="NAME" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="SANPHAMs" Relationship="SNEAKERSHOPModel.FK_Product_SIZE" FromRole="SIZE" ToRole="SANPHAM" />
+        </EntityType>
+        <Association Name="FK_Product_SIZE">
+          <End Type="SNEAKERSHOPModel.SIZE" Role="SIZE" Multiplicity="1" />
+          <End Type="SNEAKERSHOPModel.SANPHAM" Role="SANPHAM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SIZE">
+              <PropertyRef Name="ID_SIZE" />
+            </Principal>
+            <Dependent Role="SANPHAM">
+              <PropertyRef Name="ID_SIZE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SNEAKERSHOPModelStoreContainer" CdmEntityContainer="SneakerEntities">
+          <EntitySetMapping Name="BINHLUANs">
+            <EntityTypeMapping TypeName="SNEAKERSHOPModel.BINHLUAN">
+              <MappingFragment StoreEntitySet="BINHLUAN">
+                <ScalarProperty Name="ID_BINHLUAN" ColumnName="ID_BINHLUAN" />
+                <ScalarProperty Name="ID_USER" ColumnName="ID_USER" />
+                <ScalarProperty Name="ID_SANPHAM" ColumnName="ID_SANPHAM" />
+                <ScalarProperty Name="NGAY" ColumnName="NGAY" />
+                <ScalarProperty Name="NOIDUNG" ColumnName="NOIDUNG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CATALOGies">
+            <EntityTypeMapping TypeName="SNEAKERSHOPModel.CATALOGY">
+              <MappingFragment StoreEntitySet="CATALOGY">
+                <ScalarProperty Name="ID_CATALOGY" ColumnName="ID_CATALOGY" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MANAGERs">
+            <EntityTypeMapping TypeName="SNEAKERSHOPModel.MANAGER">
+              <MappingFragment StoreEntitySet="MANAGER">
+                <ScalarProperty Name="ID_MANAGER" ColumnName="ID_MANAGER" />
+                <ScalarProperty Name="LOGINNAME" ColumnName="LOGINNAME" />
+                <ScalarProperty Name="PASS" ColumnName="PASS" />
+                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+                <ScalarProperty Name="IMAGE1" ColumnName="IMAGE1" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="ISACTIVE" ColumnName="ISACTIVE" />
+                <ScalarProperty Name="ISADMIN" ColumnName="ISADMIN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NHASXes">
+            <EntityTypeMapping TypeName="SNEAKERSHOPModel.NHASX">
+              <MappingFragment StoreEntitySet="NHASX">
+                <ScalarProperty Name="ID_NHASX" ColumnName="ID_NHASX" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QUANGCAOs">
+            <EntityTypeMapping TypeName="SNEAKERSHOPModel.QUANGCAO">
+              <MappingFragment StoreEntitySet="QUANGCAO">
+                <ScalarProperty Name="ID_QC" ColumnName="ID_QC" />
+                <ScalarProperty Name="TIEUDE" ColumnName="TIEUDE" />
+                <ScalarProperty Name="LINKIMAGES" ColumnName="LINKIMAGES" />
+                <ScalarProperty Name="NGAY" ColumnName="NGAY" />
+                <ScalarProperty Name="ThuTu" ColumnName="ThuTu" />
+                <ScalarProperty Name="LienKet" ColumnName="LienKet" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SANPHAMs">
+            <EntityTypeMapping TypeName="SNEAKERSHOPModel.SANPHAM">
+              <MappingFragment StoreEntitySet="SANPHAM">
+                <ScalarProperty Name="ID_SANPHAM" ColumnName="ID_SANPHAM" />
+                <ScalarProperty Name="ID_CATALOGY" ColumnName="ID_CATALOGY" />
+                <ScalarProperty Name="ID_NHASX" ColumnName="ID_NHASX" />
+                <ScalarProperty Name="TENSP" ColumnName="TENSP" />
+                <ScalarProperty Name="ID_SIZE" ColumnName="ID_SIZE" />
+                <ScalarProperty Name="GIA" ColumnName="GIA" />
+                <ScalarProperty Name="SALE" ColumnName="SALE" />
+                <ScalarProperty Name="MAUSAC" ColumnName="MAUSAC" />
+                <ScalarProperty Name="MOTA" ColumnName="MOTA" />
+                <ScalarProperty Name="IMAGE1" ColumnName="IMAGE1" />
+                <ScalarProperty Name="IMAGE2" ColumnName="IMAGE2" />
+                <ScalarProperty Name="IMAGE3" ColumnName="IMAGE3" />
+                <ScalarProperty Name="IMAGE4" ColumnName="IMAGE4" />
+                <ScalarProperty Name="SOLUONG" ColumnName="SOLUONG" />
+                <ScalarProperty Name="NGAY" ColumnName="NGAY" />
+                <ScalarProperty Name="TAGS" ColumnName="TAGS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SEOs">
+            <EntityTypeMapping TypeName="SNEAKERSHOPModel.SEO">
+              <MappingFragment StoreEntitySet="SEO">
+                <ScalarProperty Name="ID_SEO" ColumnName="ID_SEO" />
+                <ScalarProperty Name="TITLES" ColumnName="TITLES" />
+                <ScalarProperty Name="DESCRIPTIONS" ColumnName="DESCRIPTIONS" />
+                <ScalarProperty Name="KEYWORDS" ColumnName="KEYWORDS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SLIDEPHOTOes">
+            <EntityTypeMapping TypeName="SNEAKERSHOPModel.SLIDEPHOTO">
+              <MappingFragment StoreEntitySet="SLIDEPHOTO">
+                <ScalarProperty Name="MOTA" ColumnName="MOTA" />
+                <ScalarProperty Name="ID_SLIDE" ColumnName="ID_SLIDE" />
+                <ScalarProperty Name="TIEUDE" ColumnName="TIEUDE" />
+                <ScalarProperty Name="LINKIMAGES" ColumnName="LINKIMAGES" />
+                <ScalarProperty Name="LienKet" ColumnName="LienKet" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USERS">
+            <EntityTypeMapping TypeName="SNEAKERSHOPModel.USER">
+              <MappingFragment StoreEntitySet="USERS">
+                <ScalarProperty Name="ID_USER" ColumnName="ID_USER" />
+                <ScalarProperty Name="LOGINNAME" ColumnName="LOGINNAME" />
+                <ScalarProperty Name="PASS" ColumnName="PASS" />
+                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+                <ScalarProperty Name="DT" ColumnName="DT" />
+                <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GIOITHIEUx">
+            <EntityTypeMapping TypeName="SNEAKERSHOPModel.GIOITHIEU">
+              <MappingFragment StoreEntitySet="GIOITHIEU">
+                <ScalarProperty Name="NOIDUNG" ColumnName="NOIDUNG" />
+                <ScalarProperty Name="TIEUDE" ColumnName="TIEUDE" />
+                <ScalarProperty Name="ID_GT" ColumnName="ID_GT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LIEN_HE">
+            <EntityTypeMapping TypeName="SNEAKERSHOPModel.LIEN_HE">
+              <MappingFragment StoreEntitySet="LIEN_HE">
+                <ScalarProperty Name="PHONE2" ColumnName="PHONE2" />
+                <ScalarProperty Name="PHONE1" ColumnName="PHONE1" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="OURADDRESS" ColumnName="OURADDRESS" />
+                <ScalarProperty Name="INFO_3" ColumnName="INFO_3" />
+                <ScalarProperty Name="INFO_2" ColumnName="INFO_2" />
+                <ScalarProperty Name="INFO_1" ColumnName="INFO_1" />
+                <ScalarProperty Name="ID_LH" ColumnName="ID_LH" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PHANHOI_GOPY">
+            <EntityTypeMapping TypeName="SNEAKERSHOPModel.PHANHOI_GOPY">
+              <MappingFragment StoreEntitySet="PHANHOI_GOPY">
+                <ScalarProperty Name="NOIDUNG" ColumnName="NOIDUNG" />
+                <ScalarProperty Name="WEBSITE" ColumnName="WEBSITE" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="ID_PH_GOPY" ColumnName="ID_PH_GOPY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="SNEAKERSHOPModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TINTUCs">
+            <EntityTypeMapping TypeName="SNEAKERSHOPModel.TINTUC">
+              <MappingFragment StoreEntitySet="TINTUC">
+                <ScalarProperty Name="NOIDUNG" ColumnName="NOIDUNG" />
+                <ScalarProperty Name="NOIDUNGTOMTAT" ColumnName="NOIDUNGTOMTAT" />
+                <ScalarProperty Name="IMAGES" ColumnName="IMAGES" />
+                <ScalarProperty Name="TIEUDE" ColumnName="TIEUDE" />
+                <ScalarProperty Name="ID_TT" ColumnName="ID_TT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CT_DATHANG">
+            <EntityTypeMapping TypeName="SNEAKERSHOPModel.CT_DATHANG">
+              <MappingFragment StoreEntitySet="CT_DATHANG">
+                <ScalarProperty Name="SOLUONG" ColumnName="SOLUONG" />
+                <ScalarProperty Name="ID_SANPHAM" ColumnName="ID_SANPHAM" />
+                <ScalarProperty Name="ID_ODER" ColumnName="ID_ODER" />
+                <ScalarProperty Name="ID_CTDH" ColumnName="ID_CTDH" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DATHANGs">
+            <EntityTypeMapping TypeName="SNEAKERSHOPModel.DATHANG">
+              <MappingFragment StoreEntitySet="DATHANG">
+                <ScalarProperty Name="ISACTIVE" ColumnName="ISACTIVE" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+                <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+                <ScalarProperty Name="USRERNAME" ColumnName="USRERNAME" />
+                <ScalarProperty Name="ID_ODER" ColumnName="ID_ODER" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SIZEs">
+            <EntityTypeMapping TypeName="SNEAKERSHOPModel.SIZE">
+              <MappingFragment StoreEntitySet="SIZE">
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="SIZE1" ColumnName="SIZE1" />
+                <ScalarProperty Name="ID_SIZE" ColumnName="ID_SIZE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Web.Models.SANPHAM>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="sixteen columns">
+        <div id="pageName">
+            <div class="name_tag">
+                <p>TRANG CHỦ >> SẢN PHẨM </p>
+                <div class="shapLeft"></div>
+                <div class="shapRight"></div>
+            </div>
+        </div><!--end pageName-->
+
+    </div>
+</div><!-- container -->
+
+<div class="container">
+    <div class="featured">
+        <div class="box_head">
+            <div class="img_brand"></div>
+        </div><!--end box_head -->
+        <div class="cycle-slideshow"
+             data-cycle-fx="scrollHorz"
+             data-cycle-timeout=0
+             data-cycle-slides="> ul"
+             data-cycle-prev="div.pagers a.featuredPrev"
+             data-cycle-next="div.pagers a.featuredNxt">
+            <ul class="product_show">
+                @foreach (var item in Model)
+                {
+                    <li class="column">
+                        <div class="img">
+                            <div class="hover_over">
+                                <a class="link" href="@Url.Action("Details", "Product", new { id = item.ID_SANPHAM })">link</a>
+                                <a class="cart" href="@Url.Action("AddToCart", "Shopping", new { id = item.ID_SANPHAM }, null)">cart</a>
+                            </div>
+                            <a href="">
+                                <img src="@Url.Content("~/Upload/Sanpham/" + @item.IMAGE1)" alt="product">
+                            </a>
+                        </div>
+                        <h6><a href="@Url.Action("Details", "Product", new { id = item.ID_SANPHAM })">@item.TENSP</a></h6>
+                        <h5>@string.Format("{0:0,0 VNĐ}", item.GIA).Replace(",", ".")</h5>
+                    </li>
+                }
+                
+                
+            </ul>
+        </div>
+    </div><!--end featured-->
+</div><!--end container-->
+
+
+

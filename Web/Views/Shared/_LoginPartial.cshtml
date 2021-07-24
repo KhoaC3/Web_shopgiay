@@ -1,0 +1,32 @@
+﻿<section id="login">
+    <ul id="topNav">
+        @if (Request.IsAuthenticated)
+        {
+            <li>
+                <p>
+                    @Html.ActionLink("Xin chào: " + User.Identity.Name , "ChangePass", "Account")
+            </p>
+        </li>
+            <li>
+                @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+                {
+                    @Html.AntiForgeryToken() <a href="javascript:document.getElementById('logoutForm').submit()">Đăng xuất</a>
+                }
+            </li>
+            <li><p>@Html.ActionLink("Giỏ hàng", "ShowCart", "Shopping")</p></li>
+            <li><p>@Html.ActionLink("Thanh toán", "Login", "Account")</p></li>
+            <li><p>@Html.ActionLink("Liên hệ", "LienHe", "Home")</p></li>
+
+        }
+        else
+        {
+
+            <li><p class="active_link">@Html.ActionLink("Đăng kí", "Register", "Account")</p></li>
+            <li><p>@Html.ActionLink("Đăng nhập", "LogOn", "Account")</p></li>
+            <li><p>@Html.ActionLink("Giỏ hàng", "ShowCart", "Shopping")</p></li>
+            <li><p>@Html.ActionLink("Liên hệ", "LienHe", "Home")</p></li>
+
+        }
+    </ul>
+
+</section>

@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Web.Models.NHASX>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Tạo mới", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ID_NHASX)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NAME)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID_NHASX)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NAME)
+        </td>
+        <td>
+            @Html.ActionLink("Sửa", "Edit", new {  id=item.ID_NHASX  }) |
+            @Html.ActionLink("Chi tiết", "Details", new {  id=item.ID_NHASX }) |
+            @Html.ActionLink("Xoá", "Delete", new {  id=item.ID_NHASX })
+        </td>
+    </tr>
+}
+
+</table>

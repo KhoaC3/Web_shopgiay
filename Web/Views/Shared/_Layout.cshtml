@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>@ViewBag.Title - SneakerShop...</title>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width" />
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+        @Scripts.Render("~/bundles/jquery")
+       
+    </head>
+    <body>
+        <header>
+            @Html.Partial("_Header")
+            @{Html.RenderAction("LoadMenu", "Danhmuc");}
+
+        </header>
+        <div id="body">
+            @RenderSection("featured", required: false)
+            <section class="content-wrapper main-content clear-fix">
+                @RenderBody()
+            </section>
+        </div>
+        <footer>
+            @Html.Partial("_Footer")
+        </footer>
+
+        @Scripts.Render("~/bundles/jquery")
+@RenderSection("scripts", required: false)
+        <!-- JS
+    ================================================== -->
+        
+        <!-- jQuery.dropKick plug-in -->
+        <link rel="stylesheet" href="~/Content/Main/Js/dropKick/dropkick.css">
+        <script src="~/Content/Main/Js/dropKick/jquery.dropkick-1.0.0.js"></script>
+        <!-- jQuery.nicescroll plug-in -->
+        <script src="~/Content/Main/Js/jquery.nicescroll.js"></script>
+        <!-- jQuery.tweet plug-in -->
+        <script src="~/Content/Main/Js/jquery.tweet.js"></script>
+        <!-- jQuery.cycle2 plug-in -->
+        <script src="~/Content/Main/Js/jquery.cycle2.min.js"></script>
+        <script src="~/Content/Main/Js/jquery.cycle2.tile.min.js"></script>
+        <!-- jQuery.jcarousellite plug-in -->
+        <script src="~/Content/Main/Js/jcarousellite_1.0.1.min.js"></script>
+        <!-- jQuery.fancybox plug-in -->
+        <link rel="stylesheet" href="~/Content/Js/fancybox/jquery.fancybox-1.3.4.css">
+        <script src="~/Content/Main/Js/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+        <!-- jQuery.etalage plug-in -->
+        <script src="~/Content/Main/Js/jquery.etalage.min.js"></script>
+        <!-- jQuery.cookie plug-in -->
+        <script src="~/Content/Main/Js/jquery.cookie.js"></script>
+        <!--my custom code-->
+        <script src="~/Content/Main/Js/main.js"></script>
+
+     
+            </body>
+        </html>

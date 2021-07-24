@@ -1,0 +1,67 @@
+﻿@model Web.Models.TINTUC
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>TINTUC</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ID_TT)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ID_TT)
+            @Html.ValidationMessageFor(model => model.ID_TT)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.TIEUDE)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.TIEUDE)
+            @Html.ValidationMessageFor(model => model.TIEUDE)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.IMAGES)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.IMAGES)
+            @Html.ValidationMessageFor(model => model.IMAGES)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.NOIDUNGTOMTAT)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NOIDUNGTOMTAT)
+            @Html.ValidationMessageFor(model => model.NOIDUNGTOMTAT)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.NOIDUNG)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NOIDUNG)
+            @Html.ValidationMessageFor(model => model.NOIDUNG)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+
