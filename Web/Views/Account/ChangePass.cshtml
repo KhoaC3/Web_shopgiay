@@ -17,7 +17,7 @@
 
 
     <fieldset>
-        <legend>Thay Đổi Mật Khẩu</legend>
+        <legend style="font-size: 120%">Thay Đổi Mật Khẩu</legend>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.OldPassword)
@@ -42,7 +42,7 @@
             @Html.ValidationMessageFor(model => model.ConfirmPassword)
         </div>
         <p>
-            <input class="red_btn" type="submit" value="Lưu lại" />
+            <input  style="margin: 10px 0 0 0" class="red_btn" type="submit" value="Lưu lại" />
         </p>
     </fieldset>
 }
