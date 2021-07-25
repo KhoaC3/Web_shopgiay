@@ -6,10 +6,18 @@
 @model Web.ViewModel.ChangePasswordVM
 @using (Html.BeginForm())
 {
+
     @Html.ValidationSummary(true)
 
+    <style>
+        fieldset {
+            margin: 10px 700px 10px 700px;
+        }
+    </style>
+
+
     <fieldset>
-        <legend>ChangePasswordVM</legend>
+        <legend>Thay Đổi Mật Khẩu</legend>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.OldPassword)
@@ -34,7 +42,7 @@
             @Html.ValidationMessageFor(model => model.ConfirmPassword)
         </div>
         <p>
-            <input type="submit" value="Lưu lại" />
+            <input class="red_btn" type="submit" value="Lưu lại" />
         </p>
     </fieldset>
 }
